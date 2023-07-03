@@ -75,7 +75,11 @@ public class Conta {
     public void setValorTotalEmPoupanca(Double valorTotalEmPoupanca) {
         this.valorTotalEmPoupanca = valorTotalEmPoupanca;
     }
-
+    public void pegarValores(){
+        System.out.println("Valor na conta: " + valorTotal);
+        System.out.println("Valor na poupança: " + valorTotalEmPoupanca);
+        System.out.println("Valor total: " + (valorTotal + valorTotalEmPoupanca));
+    }
     public void sacar(Double qtd){
         validarValor(qtd);
         valorTotal -= qtd;
