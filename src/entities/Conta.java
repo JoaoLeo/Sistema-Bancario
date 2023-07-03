@@ -2,6 +2,7 @@ package entities;
 
 import enums.StatusConta;
 import enums.TipoConta;
+import exceptions.TratadorExcecoes;
 
 import java.util.Date;
 
@@ -33,26 +34,12 @@ public class Conta {
         return numero;
     }
 
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
     public String getAgencia() {
         return agencia;
     }
-
-    public void setAgencia(String agencia) {
-        this.agencia = agencia;
-    }
-
     public Cliente getDono() {
         return dono;
     }
-
-    public void setDono(Cliente dono) {
-        this.dono = dono;
-    }
-
     public TipoConta getTipoConta() {
         return tipoConta;
     }
@@ -73,10 +60,6 @@ public class Conta {
         return dtCriacao;
     }
 
-    public void setDtCriacao(Date dtCriacao) {
-        this.dtCriacao = dtCriacao;
-    }
-
     public Double getValorTotal() {
         return valorTotal;
     }
@@ -94,24 +77,29 @@ public class Conta {
     }
 
     public void sacar(Double qtd){
-        if(qtd > valorTotal){
-            System.out.println("Essa conta não possui essa quantidade de dinheiro na conta");
-            return;
-        }
+        validarValor(qtd);
         valorTotal -= qtd;
         System.out.println("Sacando " + qtd + "R$");
     }
     public void depositar(Double qtd){
+        if(qtd <= 0){
+            throw new TratadorExcecoes("Valor invalido");
+        }
         valorTotal += qtd;
         System.out.println(qtd + "R$ depositado valor atual: " + valorTotal);
     }
     public void guardarNaPoupanca(Double qtd){
-        if(qtd > valorTotal){
-            System.out.println("Essa conta não possui essa quantidade de dinheiro na conta");
-            return;
-        }
+        validarValor(qtd);
         valorTotal -= qtd;
         valorTotalEmPoupanca += qtd;
         System.out.println(qtd + "R$ guardado! Valor atual da poupança: " + valorTotalEmPoupanca);
+    }
+    public void validarValor(Double qtd){
+        if(qtd > valorTotal){
+            throw new TratadorExcecoes("A conta não possui essa quantidade de dinhero");
+        }
+        if(qtd <= 0){
+            throw new TratadorExcecoes("Valor invalido");
+        }
     }
 }
