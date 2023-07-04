@@ -106,4 +106,18 @@ public class Conta {
             throw new TratadorExcecoes("Valor invalido");
         }
     }
+
+    @Override
+    public String toString() {
+        return "Conta{" +
+                "numero='" + numero + '\'' +
+                ", agencia='" + agencia + '\'' +
+                ", dono=" + dono +
+                ", tipoConta=" + tipoConta +
+                ", statusConta=" + statusConta +
+                ", dtCriacao=" + dtCriacao +
+                ", valorTotal=" + valorTotal +
+                ", valorTotalEmPoupanca=" + valorTotalEmPoupanca +
+                '}';
+    }
 }
