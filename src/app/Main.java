@@ -14,24 +14,16 @@ public class Main {
     public static void main(String[] args) {
         boolean loop = true;
         while(loop){
-            System.out.println("Digite uma opção: ");
-            System.out.println("[1] Criar conta");
-            System.out.println("[2] Acessar opções da conta");
-            System.out.println("[3] Criar cliente");
-            System.out.println("[4] Acessar opções de cliente");
-            System.out.println("[5] Ver clientes");
-            System.out.println("[6] Ver contas");
-            int option = in.nextInt();
-            if (option <= 0 || option >= 8) {
+            int option = Menu.printMenuInicial();
+            if (option <= 0 || option >= 3) {
                 System.out.println("Opção invalida");
-                loop = false;
             }
             switch(option) {
                 case 1:
-
+                    int a = Menu.printMenuOpcoesCliente();
                     break;
                 case 2:
-
+                    int b = Menu.printMenuOpcoesConta();
                     break;
                 default:
 
