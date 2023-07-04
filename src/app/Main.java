@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
-    Scanner in = new Scanner(System.in);
+    public static Scanner in = new Scanner(System.in);
     public static void main(String[] args) {
         boolean loop = true;
         while(loop){
@@ -37,6 +37,7 @@ public class Main {
 
             }
         }
+        in.close();
     }
 
     public Conta criarConta(String numero, String agencia, Cliente dono, TipoConta tipoConta,
